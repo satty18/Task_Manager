@@ -30,44 +30,54 @@ The server will start on http://localhost:8080. API Endpoints User
 
 ## Authentication 
 • Register a new user 
-POST /register Request Body:
-code{ \"username\": \"example\", \"password\": \"password\" }
+
+POST `/register` 
+
+Request Body:
+`code{ \"username\": \"example\", \"password\": \"password\" }
+`
 
 • Login and get a JWT token
 
-POST /login Request Body:{
-\"username\": \"example\", \"password\": \"password\" }
+`POST /login`
 
-Update user profile (requires JWT token)
+`Request Body:{
+\"username\": \"example\", \"password\": \"password\" }`
 
-PUT /profile Request Body:{
+* Update user profile (requires JWT token)
+
+`PUT /profile Request Body:{
 \"username\": \"newUsername\", \"avatar\": \"avatarURL\" }
-
+`
 ## Task Management (Protected)
 • Get all tasks
-GET /tasks
+`GET /tasks`
 
 Create a new task
+`POST /tasks`
 
-POST /tasks Request Body:{ \"title\":
+`Request Body:{ \"title\":
 \"New Task\", \"description\": \"Task description\", \"status\": \"To
 Do\", \"due_date\": \"2022-12-31\" }
+`
 
-• Update a task
+• Update a task `PUT /tasks/{id}`
 
-PUT /tasks/{id} Request Body:{ \"title\":
+` Request Body:{ \"title\":
 \"Updated Task\", \"description\": \"Updated description\", \"status\":
 \"In Progress\", \"due_date\": \"2023-01-31\" }
+`
 
 • Delete a task
 
- DELETE /tasks/{id}
+ `DELETE /tasks/{id}`
+
 • Search tasks by query 
-  GET /tasks/search?q=query
+  `GET /tasks/search?q=query`
 
 • Sort tasks by specified field
 
-  GET /tasks/sort?sort_by=field
+  `GET /tasks/sort?sort_by=field`
 
 Example Request Headers To access protected routes, include the JWT
 token in the Authorization header: 
